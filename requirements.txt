@@ -1,0 +1,2 @@
+# Core workflow has zero required third-party dependencies — pure stdlib.
+# Nothing to install for the default (deterministic) mode.

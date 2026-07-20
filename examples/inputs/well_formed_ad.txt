@@ -1,0 +1,5 @@
+Clarity Docs helps small teams turn scattered meeting notes into organized,
+searchable knowledge. Every note is automatically tagged by topic, so
+finding a decision from three weeks ago takes seconds, not a search through
+old chat threads. Start your free trial today and see your first organized
+week in minutes.

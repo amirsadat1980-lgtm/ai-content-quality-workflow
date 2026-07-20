@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "name": "well_formed_ad",
+      "original_text": "Clarity Docs helps small teams turn scattered meeting notes into organized,\nsearchable knowledge. Every note is automatically tagged by topic, so\nfinding a decision from three weeks ago takes seconds, not a search through\nold chat threads. Start your free trial today and see your first organized\nweek in minutes.",
+      "original_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.4948,
+        "composite": 0.9158
+      },
+      "revised_text": "Clarity Docs helps small teams turn scattered meeting notes into organized,\nsearchable knowledge. Every note is automatically tagged by topic, so\nfinding a decision from three weeks ago takes seconds, not a search through\nold chat threads. Start your free trial today and see your first organized\nweek in minutes.",
+      "revised_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.4948,
+        "composite": 0.9158
+      },
+      "fixes_applied": [],
+      "improved": true
+    },
+    {
+      "name": "too_long_no_cta",
+      "original_text": "Clarity Docs is a note-taking platform built for teams who are tired of\nlosing track of decisions made in meetings. Every conversation generates\nnotes, and every note contains context that someone will eventually need\nagain, whether that is a deadline, a customer commitment, or a technical\ndecision that shaped a project. Clarity Docs automatically organizes these\nnotes by topic and participant, building a searchable archive that grows\nmore useful over time. Teams that adopt structured note-taking typically\nfind that fewer decisions get relitigated, because the original reasoning\nis easy to find again. The platform integrates with common calendar tools\nso notes are automatically linked to the meeting they came from, and it\nsupports tagging, full-text search, and shareable summaries. Setup takes\nonly a few minutes, and existing notes can be imported from most common\nformats without any manual reformatting work on the part of the team.",
+      "original_scores": {
+        "length": 0.3444,
+        "keywords": 1.0,
+        "cta": 0.0,
+        "forbidden": 1.0,
+        "readability": 0.2889,
+        "composite": 0.5222
+      },
+      "revised_text": "Clarity Docs is a note-taking platform built for teams who are tired of\nlosing track of decisions made in meetings. Every conversation generates\nnotes, and every note contains context that someone will eventually need\nagain, whether that is a deadline, a customer commitment, or a technical\ndecision that shaped a project. Clarity Docs automatically organizes these\nnotes by topic and participant, building a searchable archive that grows\nmore useful over time. free trial",
+      "revised_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.3486,
+        "composite": 0.8914
+      },
+      "fixes_applied": [
+        "trimmed to fit the 90-word budget (was 146 words)",
+        "appended missing call-to-action: 'free trial'"
+      ],
+      "improved": true
+    },
+    {
+      "name": "jargon_violation",
+      "original_text": "Clarity Docs lets your team leverage synergistic best-in-class knowledge\ncapture to holistically empower cross-functional collaboration at scale.",
+      "original_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 0.0,
+        "forbidden": 0.0,
+        "readability": 0.1311,
+        "composite": 0.3552
+      },
+      "revised_text": "Clarity Docs lets your team [removed] [removed] [removed] knowledge\ncapture to [removed] empower [removed] collaboration at scale. free trial",
+      "revised_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.2354,
+        "composite": 0.8726
+      },
+      "fixes_applied": [
+        "removed forbidden term 'synergistic'",
+        "removed forbidden term 'leverage'",
+        "removed forbidden term 'best-in-class'",
+        "removed forbidden term 'holistically'",
+        "removed forbidden term 'cross-functional'",
+        "appended missing call-to-action: 'free trial'"
+      ],
+      "improved": true
+    }
+  ]
+}

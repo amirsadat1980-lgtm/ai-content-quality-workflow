@@ -1,0 +1,13 @@
+Clarity Docs is a note-taking platform built for teams who are tired of
+losing track of decisions made in meetings. Every conversation generates
+notes, and every note contains context that someone will eventually need
+again, whether that is a deadline, a customer commitment, or a technical
+decision that shaped a project. Clarity Docs automatically organizes these
+notes by topic and participant, building a searchable archive that grows
+more useful over time. Teams that adopt structured note-taking typically
+find that fewer decisions get relitigated, because the original reasoning
+is easy to find again. The platform integrates with common calendar tools
+so notes are automatically linked to the meeting they came from, and it
+supports tagging, full-text search, and shareable summaries. Setup takes
+only a few minutes, and existing notes can be imported from most common
+formats without any manual reformatting work on the part of the team.

@@ -1,0 +1,10 @@
+Draft:
+{text}
+
+Requirements:
+- Length: between {min_words} and {max_words} words
+- Must include these keywords: {required_keywords}
+- Must include a call to action, e.g. one of: {required_cta_phrases}
+- Must NOT contain these terms: {forbidden_terms}
+
+Return only the revised draft.

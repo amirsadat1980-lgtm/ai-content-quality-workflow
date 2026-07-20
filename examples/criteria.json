@@ -1,0 +1,35 @@
+[
+  {
+    "id": "well_formed_ad",
+    "input_file": "inputs/well_formed_ad.txt",
+    "criteria": {
+      "min_words": 30,
+      "max_words": 70,
+      "required_keywords": ["Clarity Docs", "organized"],
+      "required_cta_phrases": ["free trial"],
+      "forbidden_terms": ["synergy", "leverage", "best-in-class"]
+    }
+  },
+  {
+    "id": "too_long_no_cta",
+    "input_file": "inputs/too_long_no_cta.txt",
+    "criteria": {
+      "min_words": 30,
+      "max_words": 90,
+      "required_keywords": ["Clarity Docs", "notes"],
+      "required_cta_phrases": ["free trial", "sign up", "try it free"],
+      "forbidden_terms": ["synergy", "leverage", "best-in-class"]
+    }
+  },
+  {
+    "id": "jargon_violation",
+    "input_file": "inputs/jargon_violation.txt",
+    "criteria": {
+      "min_words": 10,
+      "max_words": 60,
+      "required_keywords": ["Clarity Docs"],
+      "required_cta_phrases": ["free trial", "sign up", "try it free"],
+      "forbidden_terms": ["synergistic", "leverage", "best-in-class", "holistically", "cross-functional"]
+    }
+  }
+]
