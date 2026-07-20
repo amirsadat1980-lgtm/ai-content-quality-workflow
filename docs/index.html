@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Content Quality Workflow — Live Results</title>
+<meta name="description" content="Real before/after content-quality scoring: length, keywords, call-to-action, forbidden terms, and readability." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #030807;
+    --card: rgba(9, 26, 20, 0.55);
+    --border: rgba(26, 255, 168, 0.16);
+    --primary: #1affa8;
+    --muted: #b3ccc0;
+    --fg: #eafff5;
+    --bad: #ff5470;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  a { color: var(--primary); }
+  header {
+    padding: 3rem 1.5rem 2rem;
+    text-align: center;
+    background: radial-gradient(60% 60% at 50% 0%, rgba(26,255,168,0.12), transparent 70%);
+  }
+  header .eyebrow {
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0.5rem 0; }
+  header p { color: var(--muted); max-width: 640px; margin: 0.5rem auto 0; }
+  main { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+  .piece {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  .piece h2 { margin: 0 0 0.25rem; font-size: 1.15rem; }
+  .composite-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .badge {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 1rem;
+  }
+  .badge.before { background: rgba(255,255,255,0.08); color: var(--muted); }
+  .badge.after { background: var(--primary); color: #001208; }
+  .arrow { color: var(--muted); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+  .col h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.5rem; }
+  blockquote {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--primary);
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+  }
+  .scores { margin-top: 0.6rem; font-size: 0.78rem; color: var(--muted); }
+  .fixes { margin-top: 1rem; font-size: 0.85rem; }
+  .fixes ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+  .fixes li { margin-bottom: 0.2rem; }
+  .none { color: var(--muted); font-style: italic; }
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Live Demo</p>
+  <h1>AI Content Quality Workflow</h1>
+  <p>
+    Real before/after output from the bundled example content pieces — evaluated on
+    length, keywords, call-to-action, forbidden terms, and readability, then
+    auto-revised with explicit, deterministic fixes. Regenerate this exact data
+    yourself with <code>python -m content_qa.cli run</code> — see the
+    <a href="https://github.com/amirsadat1980-lgtm/ai-content-quality-workflow" target="_blank" rel="noopener">source on GitHub</a>.
+  </p>
+</header>
+
+<main id="pieces"></main>
+
+<footer>
+  Amir Sadat — Prompt Engineer &amp; AI Systems Builder ·
+  <a href="https://amirsadat1980-lgtm.github.io/amirportfolio/" target="_blank" rel="noopener">Portfolio</a> ·
+  <a href="https://github.com/amirsadat1980-lgtm/ai-content-quality-workflow" target="_blank" rel="noopener">GitHub</a>
+</footer>
+
+<script>
+const DATA = {
+  "results": [
+    {
+      "name": "well_formed_ad",
+      "original_text": "Clarity Docs helps small teams turn scattered meeting notes into organized,\nsearchable knowledge. Every note is automatically tagged by topic, so\nfinding a decision from three weeks ago takes seconds, not a search through\nold chat threads. Start your free trial today and see your first organized\nweek in minutes.",
+      "original_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.4948,
+        "composite": 0.9158
+      },
+      "revised_text": "Clarity Docs helps small teams turn scattered meeting notes into organized,\nsearchable knowledge. Every note is automatically tagged by topic, so\nfinding a decision from three weeks ago takes seconds, not a search through\nold chat threads. Start your free trial today and see your first organized\nweek in minutes.",
+      "revised_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.4948,
+        "composite": 0.9158
+      },
+      "fixes_applied": [],
+      "improved": true
+    },
+    {
+      "name": "too_long_no_cta",
+      "original_text": "Clarity Docs is a note-taking platform built for teams who are tired of\nlosing track of decisions made in meetings. Every conversation generates\nnotes, and every note contains context that someone will eventually need\nagain, whether that is a deadline, a customer commitment, or a technical\ndecision that shaped a project. Clarity Docs automatically organizes these\nnotes by topic and participant, building a searchable archive that grows\nmore useful over time. Teams that adopt structured note-taking typically\nfind that fewer decisions get relitigated, because the original reasoning\nis easy to find again. The platform integrates with common calendar tools\nso notes are automatically linked to the meeting they came from, and it\nsupports tagging, full-text search, and shareable summaries. Setup takes\nonly a few minutes, and existing notes can be imported from most common\nformats without any manual reformatting work on the part of the team.",
+      "original_scores": {
+        "length": 0.3444,
+        "keywords": 1.0,
+        "cta": 0.0,
+        "forbidden": 1.0,
+        "readability": 0.2889,
+        "composite": 0.5222
+      },
+      "revised_text": "Clarity Docs is a note-taking platform built for teams who are tired of\nlosing track of decisions made in meetings. Every conversation generates\nnotes, and every note contains context that someone will eventually need\nagain, whether that is a deadline, a customer commitment, or a technical\ndecision that shaped a project. Clarity Docs automatically organizes these\nnotes by topic and participant, building a searchable archive that grows\nmore useful over time. free trial",
+      "revised_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.3486,
+        "composite": 0.8914
+      },
+      "fixes_applied": [
+        "trimmed to fit the 90-word budget (was 146 words)",
+        "appended missing call-to-action: 'free trial'"
+      ],
+      "improved": true
+    },
+    {
+      "name": "jargon_violation",
+      "original_text": "Clarity Docs lets your team leverage synergistic best-in-class knowledge\ncapture to holistically empower cross-functional collaboration at scale.",
+      "original_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 0.0,
+        "forbidden": 0.0,
+        "readability": 0.1311,
+        "composite": 0.3552
+      },
+      "revised_text": "Clarity Docs lets your team [removed] [removed] [removed] knowledge\ncapture to [removed] empower [removed] collaboration at scale. free trial",
+      "revised_scores": {
+        "length": 1.0,
+        "keywords": 1.0,
+        "cta": 1.0,
+        "forbidden": 1.0,
+        "readability": 0.2354,
+        "composite": 0.8726
+      },
+      "fixes_applied": [
+        "removed forbidden term 'synergistic'",
+        "removed forbidden term 'leverage'",
+        "removed forbidden term 'best-in-class'",
+        "removed forbidden term 'holistically'",
+        "removed forbidden term 'cross-functional'",
+        "appended missing call-to-action: 'free trial'"
+      ],
+      "improved": true
+    }
+  ]
+};
+
+function pct(x) { return (x * 100).toFixed(0) + "%"; }
+
+const container = document.getElementById("pieces");
+container.innerHTML = DATA.results.map(r => `
+  <div class="piece">
+    <h2>${r.name.replace(/_/g, " ")}</h2>
+    <div class="composite-row">
+      <span class="badge before">before ${pct(r.original_scores.composite)}</span>
+      <span class="arrow">&rarr;</span>
+      <span class="badge after">after ${pct(r.revised_scores.composite)}</span>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3>Original</h3>
+        <blockquote>${r.original_text}</blockquote>
+        <div class="scores">${Object.entries(r.original_scores).map(([k,v]) => `${k}: ${pct(v)}`).join(" · ")}</div>
+      </div>
+      <div class="col">
+        <h3>Revised</h3>
+        <blockquote>${r.revised_text}</blockquote>
+        <div class="scores">${Object.entries(r.revised_scores).map(([k,v]) => `${k}: ${pct(v)}`).join(" · ")}</div>
+      </div>
+    </div>
+    <div class="fixes">
+      <strong>Fixes applied:</strong>
+      ${r.fixes_applied.length
+        ? `<ul>${r.fixes_applied.map(f => `<li>${f}</li>`).join("")}</ul>`
+        : `<span class="none">none needed — already passed every check</span>`}
+    </div>
+  </div>
+`).join("");
+</script>
+
+</body>
+</html>
