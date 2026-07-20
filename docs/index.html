@@ -189,11 +189,16 @@ const DATA = {
 };
 
 function pct(x) { return (x * 100).toFixed(0) + "%"; }
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
 
 const container = document.getElementById("pieces");
 container.innerHTML = DATA.results.map(r => `
   <div class="piece">
-    <h2>${r.name.replace(/_/g, " ")}</h2>
+    <h2>${escapeHtml(r.name.replace(/_/g, " "))}</h2>
     <div class="composite-row">
       <span class="badge before">before ${pct(r.original_scores.composite)}</span>
       <span class="arrow">&rarr;</span>
@@ -202,19 +207,19 @@ container.innerHTML = DATA.results.map(r => `
     <div class="cols">
       <div class="col">
         <h3>Original</h3>
-        <blockquote>${r.original_text}</blockquote>
+        <blockquote>${escapeHtml(r.original_text)}</blockquote>
         <div class="scores">${Object.entries(r.original_scores).map(([k,v]) => `${k}: ${pct(v)}`).join(" · ")}</div>
       </div>
       <div class="col">
         <h3>Revised</h3>
-        <blockquote>${r.revised_text}</blockquote>
+        <blockquote>${escapeHtml(r.revised_text)}</blockquote>
         <div class="scores">${Object.entries(r.revised_scores).map(([k,v]) => `${k}: ${pct(v)}`).join(" · ")}</div>
       </div>
     </div>
     <div class="fixes">
       <strong>Fixes applied:</strong>
       ${r.fixes_applied.length
-        ? `<ul>${r.fixes_applied.map(f => `<li>${f}</li>`).join("")}</ul>`
+        ? `<ul>${r.fixes_applied.map(f => `<li>${escapeHtml(f)}</li>`).join("")}</ul>`
         : `<span class="none">none needed — already passed every check</span>`}
     </div>
   </div>
